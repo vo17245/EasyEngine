@@ -22,3 +22,7 @@ function EZ_Copy(obj){
     return JSON.parse(JSON.stringify(obj)); 
 
 }
+
+function EZ_Now(){
+    return Number(new Date());
+}

@@ -188,7 +188,9 @@ class EZ_TableLayer extends EZ_Layer{
         this.boxWidth=0;
         this.boxHeight=0;
         this.window=window;
-        //编辑模式
+        // 新增列按钮
+        this.addColumnButton=new EZ_Button(0,0,1,1,"add column",this.window);
+        //模式
         this.mode=EZ_TableLayer.MODE.NORMAL;
         //NORMAL EDIT 模式
         this.selectedRow=-1;
@@ -197,6 +199,7 @@ class EZ_TableLayer extends EZ_Layer{
         this.selectedYMin=-1;
         this.selectedXMax=-1;
         this.selectedYMax=-1;
+        this.input=new EZ_Input(0,0,1,1,this.window);
 
     }
     
@@ -342,6 +345,8 @@ class EZ_TableLayer extends EZ_Layer{
         this.selectedXMin=xMin;
         this.selectedYMax=yMax;
         this.selectedYMin=yMin;
+
+        
     }
     OnEvent(event){
         //普通模式
@@ -359,9 +364,14 @@ class EZ_TableLayer extends EZ_Layer{
                         // 如果相同进入编辑模式
                         this.mode=EZ_TableLayer.MODE.EDIT;
                         // 插入输入框
-                        let input=new EZ_Input(this.selectedXMin,this.selectedYMin,this.selectedXMax-this.selectedXMin,this.selectedYMax-this.selectedYMin,this.window)
-                        input.value=this.table.columnList[lastSelectCol].GetBlockList()[lastSelectRow].text;
-                        this.PushGuiElement(input);
+                        //let input=new EZ_Input(this.selectedXMin,this.selectedYMin,this.selectedXMax-this.selectedXMin,this.selectedYMax-this.selectedYMin,this.window)
+                        this.input.x=this.selectedXMin;
+                        this.input.y=this.selectedYMin;
+                        this.input.width=this.selectedXMax-this.selectedXMin;
+                        this.input.height=this.selectedYMax-this.selectedYMin;
+                        this.input.value=this.table.columnList[lastSelectCol].GetBlockList()[lastSelectRow].text;
+                        //input.value=this.table.columnList[lastSelectCol].GetBlockList()[lastSelectRow].text;
+                        this.PushGuiElement(this.input);
                         // 激活输入框
                         EZ_EventDispather.PushToAppEventList(new EZ_MousePressEvent(this.selectedXMin+2,this.selectedYMin+2,EZ_MOUSE_KEY.LEFT));
                         
@@ -393,7 +403,7 @@ class EZ_TableLayer extends EZ_Layer{
           
                         //进入普通模式
                         this.mode=EZ_TableLayer.MODE.NORMAL;
-                        this.PopGuiElement();
+                        this.PopGuiElement(this.input);
                        
                     }
                 }

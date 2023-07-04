@@ -8,5 +8,8 @@ class EZ_GuiElement{
     OnRender(){
         //在子类中实现
     }
+    OnUpdate(time_ms){
+        //在子类中实现
+    }
 
 }

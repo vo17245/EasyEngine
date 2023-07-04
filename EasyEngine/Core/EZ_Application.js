@@ -18,9 +18,12 @@ class EZ_Application{
         });
         //
         let ez_window=this.window;
+        let time_ms=EZ_Now();
         EZ_RepeatCall(500,function(){
+            //Event
             ez_window.OnGuiEvent();
             ez_window.OnEvent();
+            //Update
             
             EZ_EventDispather.Clear();
             ez_window.OnRender();
