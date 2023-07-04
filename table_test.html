@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            *{margin:0;padding:0;}
+        
+        </style>
+    </head>
+    <body >
+        <div id="app" style="margin:0;padding:0;"></div>
+    </body>
+    <script src="EasyEngine/EZ_Math.js"></script>
+<script src="EasyEngine/Core/EZ_Core.js"></script>
+<!--Event-->
+<script src="EasyEngine/Event/EZ_Event.js"></script>
+<script src="EasyEngine/Event/EZ_MouseEvent.js"></script>
+<script src="EasyEngine/Event/EZ_EventDispather.js"></script>
+<script src="EasyEngine/Event/EZ_TextInputEvent.js"></script>
+<script src="EasyEngine/Event/EZ_InputBlurEvent.js"></script>
+<!--Gui-->
+<script src="EasyEngine/Gui/EZ_Gui.js"></script>
+<script src="EasyEngine/Gui/EZ_Input.js"></script>
+<script src="EasyEngine/EZ_HTMLGui.js"></script>
+<!--Renderer-->
+<script src="EasyEngine/EZ_Renderer.js"></script>
+<!--Core-->
+<script src="EasyEngine/Core/EZ_Layer.js"></script>
+<script src="EasyEngine/Core/EZ_Window.js"></script>
+<script src="EasyEngine/Core/EZ_Application.js"></script>
+    <script src="EZ_TableLayer.js"></script>
+    <script>
+ 
+        let app=new EZ_Application(0,0,640,480,'table','app');
+   
+        app.window.GetRenderer2D().SetViewport(640,480);
+        
+        let tableLayer=new EZ_TableLayer(app.window.GetRenderer2D(),EZ_Table.CreateNewTable(),app.window);
+        app.window.PushLayer(tableLayer);
+        
+        app.Run();
+        
+
+
+    </script>
+</html>
+
+
+
