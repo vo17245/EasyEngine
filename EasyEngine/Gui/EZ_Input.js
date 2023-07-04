@@ -1,9 +1,10 @@
-class EZ_Input{
+class EZ_Input extends EZ_GuiElement{
     static STATE={
         BLUR:0,
         FOCUS:1,
     }
     constructor(x,y,width,height,window){
+        super();
         this.x=x;
         this.y=y;
         this.width=width;
@@ -40,6 +41,7 @@ class EZ_Input{
             if(this.state===EZ_Input.STATE.FOCUS){
                 //跟新value
                 this.value=this.window.GetInputValue();
+              
                 
             }
         }

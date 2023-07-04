@@ -12,22 +12,26 @@ class EZ_Application{
         document.addEventListener('contextmenu', function(event) {
             event.preventDefault();
         });
+        //视口大小
+        //this.window.renderer2D.SetViewport(window.screen.width,window.screen.height);
         //循环
         let ez_window=this.window;
         let lastTimestamp=EZ_Now();
         let app=this;
         EZ_RepeatCall(500,function(){
             //Event
-            app.OnGuiEvent();
             app.OnEvent();
+            app.OnGuiEvent();
+            
             EZ_EventDispather.Clear();
             //Update
             let now=EZ_Now();
             let deltaTime=now-lastTimestamp;
+            lastTimestamp=now;
             app.OnUpdate(deltaTime);
-            app.OnGuiElementRender(deltaTime);
+            app.OnGuiElementUpdate(deltaTime);
             //Render
-            app.window.renderer2D.Clear(this.clear_color_r,this.clear_color_g,this.clear_color_b);
+            app.window.renderer2D.Clear(app.clear_color_r,app.clear_color_g,app.clear_color_b);
             app.OnRender();
 
             app.OnGuiElementRender();
@@ -36,11 +40,13 @@ class EZ_Application{
     OnUpdate(deltaTime){
         for(let i=0;i<this.layerStack.length;i++){
             this.layerStack[i].OnUpdate(deltaTime);
+            
         }
     }
     OnGuiElementUpdate(deltaTime){
         for(let i=0;i<this.layerStack.length;i++){
             let guiElementList=this.layerStack[i].GetGuiElementList();
+         
             for(let j=0;j<guiElementList.length;j++){
                 guiElementList[j].OnUpdate(deltaTime);
             }

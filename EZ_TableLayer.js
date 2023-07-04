@@ -190,6 +190,7 @@ class EZ_TableLayer extends EZ_Layer{
         this.window=window;
         // 新增列按钮
         this.addColumnButton=new EZ_Button(0,0,1,1,"add column",this.window);
+        this.PushGuiElement(this.addColumnButton);
         //模式
         this.mode=EZ_TableLayer.MODE.NORMAL;
         //NORMAL EDIT 模式
@@ -399,7 +400,7 @@ class EZ_TableLayer extends EZ_Layer{
                     }else{
                         // 如果不相同
                         //将文本填入单元格
-                        this.table.columnList[lastSelectCol].GetBlockList()[lastSelectRow].text=this.GetGuiElementList()[0].value;
+                        this.table.columnList[lastSelectCol].GetBlockList()[lastSelectRow].text=this.input.value;
           
                         //进入普通模式
                         this.mode=EZ_TableLayer.MODE.NORMAL;
@@ -411,6 +412,14 @@ class EZ_TableLayer extends EZ_Layer{
             }
         }
         
+        
+    }
+    OnUpdate(deltaTime){
+        //将添加新的列的按钮移动到边上
+        this.addColumnButton.x=this.boxWidth;
+        this.addColumnButton.y=100;
+        this.addColumnButton.width=40;
+        this.addColumnButton.height=40;
         
     }
     

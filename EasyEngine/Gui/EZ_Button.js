@@ -7,7 +7,7 @@ class EZ_Button extends EZ_GuiElement{
         this.height=height;
         this.id=EZ_GetUUID();
         this.backgroundColor=new EZ_Color(184,185,186);
-        this.fontColor=new EZ_Color(255,255,255);
+        this.fontColor=new EZ_Color(0,0,0);
         this.text=text;
         this.fontSize=30;
         this.window=window;
@@ -32,6 +32,8 @@ class EZ_Button extends EZ_GuiElement{
         //渲染字体
         this.renderer.DrawText(this.text,this.x,this.y+this.height,this.fontColor,this.fontSize);
         
+    }
+    OnUpdate(deltaTime){
     }
 
 }
