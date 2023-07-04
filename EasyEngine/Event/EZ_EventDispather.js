@@ -1,18 +1,18 @@
 class EZ_EventDispather{
     static eventList=[];
-    static appEventList=[];
+    static nextTickEventList=[];
     constructor(){
         
 
     }
     static Clear(){
-        EZ_EventDispather.eventList=EZ_EventDispather.appEventList;
-        EZ_EventDispather.appEventList=[];
+        EZ_EventDispather.eventList=EZ_EventDispather.nextTickEventList;
+        EZ_EventDispather.nextTickEventList=[];
     }
     static Push(event){
         EZ_EventDispather.eventList.push(event);
     }
-    static PushToAppEventList(event){
-        EZ_EventDispather.appEventList.push(event);
+    static PushToNextTick(event){
+        EZ_EventDispather.nextTickEventList.push(event);
     }
 }

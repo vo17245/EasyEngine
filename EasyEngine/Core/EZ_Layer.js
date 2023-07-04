@@ -6,21 +6,7 @@ class EZ_Layer{
     OnRender(){}//在子类中实现
     OnEvent(event){}//在子类中实现
     OnUpdate(time_ms){}//在子类中实现
-    GetHtmlElementList(){
-        return this.htmlElementList;
-    }
-    PushHtmlElement(element){
-        this.htmlElementList.push(element);
-    }
-    PopHtmlElement(element){
-        if(element===undefined){
-            if(this.htmlElementList.length==0){
-                return;
-            }
-            element=this.htmlElementList[this.htmlElementList.length-1];
-        }
-        this.htmlElementList=EZ_PopElementFromList(element,this.htmlElementList);
-    }
+
     PushGuiElement(element){
         this.guiElementList.push(element);
     }

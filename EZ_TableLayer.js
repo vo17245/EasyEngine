@@ -373,7 +373,7 @@ class EZ_TableLayer extends EZ_Layer{
                         //input.value=this.table.columnList[lastSelectCol].GetBlockList()[lastSelectRow].text;
                         this.PushGuiElement(this.input);
                         // 激活输入框
-                        EZ_EventDispather.PushToAppEventList(new EZ_MousePressEvent(this.selectedXMin+2,this.selectedYMin+2,EZ_MOUSE_KEY.LEFT));
+                        EZ_EventDispather.PushToNextTick(new EZ_MousePressEvent(this.selectedXMin+2,this.selectedYMin+2,EZ_MOUSE_KEY.LEFT));
                         
                       
                     }

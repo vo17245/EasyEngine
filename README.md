@@ -23,7 +23,6 @@
 <!--Gui-->
 <script src="EasyEngine/Gui/EZ_Gui.js"></script>
 <script src="EasyEngine/Gui/EZ_Input.js"></script>
-<script src="EasyEngine/EZ_HTMLGui.js"></script>
 <script src="EasyEngine/Gui/EZ_Button.js"></script>
 <!--Renderer-->
 <script src="EasyEngine/EZ_Renderer.js"></script>
